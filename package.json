@@ -1,0 +1,17 @@
+{
+  "name": "telegramBotPushWebhook",
+  "version": "1.0.0",
+  "description": "Github Webhook server built with Node.js",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RestrictedZone/telegramBotPushWebhook.git"
+  },
+  "author": "nGenius",
+  "license": "MIT"
+}

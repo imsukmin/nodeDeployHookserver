@@ -15,7 +15,7 @@ http.createServer(function (req, res) {
 
   var path = url.parse(req.url).pathname
 
-  if (path != '/push' || req.method != 'POST') {
+  if (path != '/tbotpush' || req.method != 'POST') {
     var data = JSON.stringify({
       "error": "invalid request"
     })

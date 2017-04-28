@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # DIRECTORY TO THE REPOSITORY
-REPOSITORY="~/code/telegramBot/"
+REPOSITORY="/code/imsukmin/telegramBot/"
 
 cd $REPOSITORY
 
 git pull
 
-pm2 restart tBot
+pm2 restart tbot

@@ -15,7 +15,9 @@ http.createServer(function (req, res) {
 
   var path = url.parse(req.url).pathname
 
-  if (path != '/tbotpush' || req.method != 'POST') {
+  if ( (path != '/restrictedZoneBotPush' ||  
+      path != '/coinoneHelperBotPush') && 
+      req.method != 'POST') {
     var data = JSON.stringify({
       "error": "invalid request"
     })
@@ -37,10 +39,21 @@ http.createServer(function (req, res) {
       })
       return res.end(data)
     }
-
-    console.log("running hook.sh")
-
-    var deploySh = spawn('sh', ['hook.sh'])
+    var runningScriptName = ''
+    if (path === '/restrictedZoneBotPush') {
+      runningScriptName = 'restrictedZoneTelegramBotHook.sh'
+    } else if (path === '/coinoneHelperBotPush') {
+      runningScriptName = 'coinoneTelegramBotHook.sh'      
+    } else {
+      console.log('invalid push path')
+      var data = JSON.stringify({
+        "error": "invalid push path",
+        key: hash
+      })
+      return res.end(data)
+    }
+    console.log("running " + runningScriptName)
+    var deploySh = spawn('sh', [runningScriptName])
     deploySh.stdout.on('data', function (data) {
       var buff = new Buffer(data)
       console.log(buff.toString('utf-8'))

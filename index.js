@@ -59,7 +59,7 @@ http.createServer(function (req, res) {
       console.log(buff.toString('utf-8'))
     })
 
-    res.writeHead(400, {
+    res.writeHead(200, {
       "Content-Type": "application/json"
     })
 
